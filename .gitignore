@@ -3,3 +3,4 @@ target
 classes
 build
 .idea
+.env
