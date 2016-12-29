@@ -35,6 +35,10 @@ public class AlbumsBean {
         entityManager.persist(album);
     }
 
+    public Album find(long id) {
+        return entityManager.find(Album.class, id);
+    }
+
     public List<Album> getAlbums() {
         CriteriaQuery<Album> cq = entityManager.getCriteriaBuilder().createQuery(Album.class);
         cq.select(cq.from(Album.class));

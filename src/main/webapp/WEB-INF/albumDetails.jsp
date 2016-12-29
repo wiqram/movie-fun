@@ -61,24 +61,32 @@
 
     <h1>Moviefun</h1>
 
-    <h2>Albums in the database</h2>
-    <table width="500">
-        <tr>
-            <td><b>Title</b></td>
-            <td><b>Artist</b></td>
-            <td><b>Year</b></td>
-        </tr>
+    <h2>Album Details</h2>
 
-        <c:forEach items="${requestScope.albums}" var="album">
-            <tr>
-                <td> ${album.title} </td>
-                <td> ${album.artist} </td>
-                <td> ${album.year} </td>
-                <td><a href="/albums/${album.id}">Details</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+    <dl>
+        <dt>Title</dt>
+        <dd>${requestScope.album.title}</dd>
 
+        <dt>Artist</dt>
+        <dd>${requestScope.album.artist}</dd>
+
+        <dt>Year</dt>
+        <dd>${requestScope.album.year}</dd>
+
+        <dt>Cover</dt>
+        <dd><img src="/albums/${requestScope.album.id}/cover" alt="Album Cover" class="cover"></dd>
+    </dl>
+
+    <h3>Change cover</h3>
+
+    <form action="/albums/${requestScope.album.id}/cover" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+        <input type="submit" value="Upload">
+    </form>
+
+    <nav>
+        <a href="/albums">Back to list of albums</a>
+    </nav>
 </div>
 <!-- /container -->
 </body>
