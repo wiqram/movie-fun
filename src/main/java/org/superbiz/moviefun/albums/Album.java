@@ -29,7 +29,7 @@ public class Album implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String artist;
     private String title;
@@ -46,7 +46,7 @@ public class Album implements Serializable {
         this.rating = rating;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -88,5 +88,22 @@ public class Album implements Serializable {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public boolean hasId() {
+        return id != null;
+    }
+
+    public boolean isEquivalent(Album other) {
+        if (year != other.year) return false;
+        if (!isEqual(title, other.title)) return false;
+        if (!isEqual(artist, other.artist)) return false;
+
+        return true;
+    }
+
+    private static <T> boolean isEqual(T one, T other) {
+        if (one != null ? !one.equals(other) : other != null) return false;
+        return true;
     }
 }
