@@ -10,3 +10,9 @@ spring:
   mvc.view:
     prefix: /WEB-INF/
     suffix: .jsp
+
+logging:
+  level:
+    root: INFO
+    org.superbiz.moviefun.movies.MoviesBean: DEBUG
+    org.superbiz.moviefun.albums.AlbumsController: ERROR
